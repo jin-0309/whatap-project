@@ -4,6 +4,7 @@ import dto.res.ProductResponseDto;
 import entity.Product;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import java.util.List;
 import java.util.Optional;
 import repository.ProductRepository;
 
@@ -20,6 +21,10 @@ public class ProductService {
     public ProductResponseDto findById(Long id) {
         Optional<Product> product = productRepository.findByIdOptional(id);
         return toDto(product.orElseThrow());
+    }
+
+    public List<ProductResponseDto> findPagination(int page, int size) {
+        return productRepository.findAllProductPagination(page, size).stream().map(this::toDto).toList();
     }
 
     private ProductResponseDto toDto(Product product) {
