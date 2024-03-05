@@ -1,9 +1,11 @@
 package controller;
 
+import dto.req.ProductRequestDto;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DefaultValue;
 import jakarta.ws.rs.GET;
+import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
@@ -35,5 +37,11 @@ public class ProductController {
     public Response getProductByPagination(@QueryParam("page") @DefaultValue("0") int page,
                                            @QueryParam("size") @DefaultValue("10") int size) {
         return Response.ok(productService.findPagination(page, size)).build();
+    }
+
+    @POST
+    @Path("/add")
+    public Response addProduct(ProductRequestDto dto) {
+        return Response.ok(productService.addProduct(dto)).build();
     }
 }
