@@ -61,7 +61,20 @@ java
     +--ProdouctService
 ```
 ---
+
 ## 데이터베이스 스키마
 ![img.png](product.png)
+
 ---
 
+## API 명세
+
+모든 요청과 응답의 Content-Type은 application/json입니다.
+
+| API                      | API URL                | Method   | Request                                                               | Response                                                                                       | StatusCode  |
+|--------------------------|------------------------|----------|-----------------------------------------------------------------------|------------------------------------------------------------------------------------------------|-------------|
+| getProduct               | /product/get/{id}      | GET      |                                                                       | {<br>"id": Long,<br>"name": "String",<br>"price": Float,<br>"description": "String"<br>}       | 200         |
+| getProductByPagination   | /product/get/page      | GET      | page?int<br>size?int                                                  | [<br> {<br>"id": int,<br>"name: String,<br>"price": int,<br>"description": String<br> }<br>]   | 200         |
+| addProduct               | /product/add           | POST     | {<br>"name": string,<br>"price": int,<br>"description": string<br>}   |                                                                                                | 201         |
+| updateProduct            | /product/update/{id}   | PUT      | {<br>"name": string,<br>"price": int,<br>"description": string<br>}   |                                                                                                | 201         |
+| deleteProduct            | /product/delete/{id}   | DELETE   |                                                                       |                                                                                                | 204         |
