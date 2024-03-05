@@ -58,3 +58,5 @@ If you want to learn more about building native executables, please consult http
 - Hibernate ORM with Panache ([guide](https://quarkus.io/guides/hibernate-orm-panache)): Simplify your persistence code
   for Hibernate ORM via the active record or the repository pattern
 - JDBC Driver - PostgreSQL ([guide](https://quarkus.io/guides/datasource)): Connect to the PostgreSQL database via JDBC
+
+![img.png](product.png)
