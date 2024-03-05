@@ -1,11 +1,7 @@
 package dto.res;
 
-import entity.Product;
-import io.quarkus.runtime.annotations.RegisterForReflection;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Getter
 public class ProductResponseDto {

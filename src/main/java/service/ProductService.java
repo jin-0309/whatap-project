@@ -3,6 +3,7 @@ package service;
 import dto.req.ProductRequestDto;
 import dto.res.ProductResponseDto;
 import entity.Product;
+import exception.ProductNotFoundException;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
@@ -22,8 +23,9 @@ public class ProductService {
     }
 
     public ProductResponseDto findById(Long id) {
-        Optional<Product> product = productRepository.findByIdOptional(id);
-        return toDto(product.orElseThrow());
+        Optional<Product> optionalProduct = productRepository.findByIdOptional(id);
+        Product product = optionalProduct.orElseThrow(ProductNotFoundException::new);
+        return toDto(product);
     }
 
     public List<ProductResponseDto> findPagination(int page, int size) {
@@ -37,13 +39,14 @@ public class ProductService {
     }
 
     public Long update(ProductRequestDto dto, Long id) {
-        Product product = productRepository.findByIdOptional(id).orElseThrow();
+        Product product = productRepository.findByIdOptional(id).orElseThrow(ProductNotFoundException::new);
         product.update(dto.getName(), dto.getPrice(), dto.getDescription());
         return product.getId();
     }
 
     public void deleteById(Long id) {
-        productRepository.deleteById(id);
+        Product product = productRepository.findByIdOptional(id).orElseThrow(ProductNotFoundException::new);
+        productRepository.delete(product);
     }
 
     private ProductResponseDto toDto(Product product) {
