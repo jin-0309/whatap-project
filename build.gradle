@@ -16,6 +16,7 @@ dependencies {
     implementation 'io.quarkus:quarkus-arc'
     implementation 'org.projectlombok:lombok:1.18.28'
     implementation 'io.quarkus:quarkus-resteasy-reactive'
+    implementation 'io.quarkus:quarkus-smallrye-openapi'
     annotationProcessor 'org.projectlombok:lombok:1.18.28'
     testImplementation 'io.quarkus:quarkus-junit5'
 }
