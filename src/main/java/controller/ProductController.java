@@ -47,7 +47,8 @@ public class ProductController {
     @GET
     @Path("/get/page")
     @Operation(summary = "상품 pagination 조회")
-    @APIResponse(content = {@Content(schema = @Schema(type = SchemaType.ARRAY, implementation = ProductResponseDto.class))})
+    @APIResponse(responseCode = "200",
+            content = {@Content(schema = @Schema(type = SchemaType.ARRAY, implementation = ProductResponseDto.class))})
     public Response getProductByPagination(@QueryParam("page") @DefaultValue("0") int page,
                                            @QueryParam("size") @DefaultValue("10") int size) {
         return Response.ok(productService.findPagination(page, size)).build();
@@ -56,8 +57,7 @@ public class ProductController {
     @POST
     @Path("/add")
     @Operation(summary = "상품 추가")
-    @APIResponse(responseCode = "201")
-    @APIResponseSchema(Long.class)
+    @APIResponse(responseCode = "201", content = {@Content(schema = @Schema(implementation = Long.class))})
     public Response addProduct(ProductRequestDto dto) {
         return Response.status(Status.CREATED).entity(productService.save(dto)).build();
     }
@@ -65,8 +65,7 @@ public class ProductController {
     @PUT
     @Path("/update/{id}")
     @Operation(summary = "상품 수정")
-    @APIResponse(responseCode = "201")
-    @APIResponseSchema(Long.class)
+    @APIResponse(responseCode = "201", content = {@Content(schema = @Schema(implementation = Long.class))})
     public Response updateProduct(@PathParam("id") Long id, ProductRequestDto dto) {
         return Response.status(Status.CREATED).entity(productService.update(dto, id)).build();
     }
