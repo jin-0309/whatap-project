@@ -29,7 +29,14 @@ public class Product {
     private String description;
 
     @Builder
-    public Product(String name, Float price, String description) {
+    public Product(Long id, String name, Float price, String description) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.description = description;
+    }
+
+    public void update(String name, Float price, String description) {
         this.name = name;
         this.price = price;
         this.description = description;

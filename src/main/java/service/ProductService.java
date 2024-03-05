@@ -36,6 +36,12 @@ public class ProductService {
         return product.getId();
     }
 
+    public Long updateProduct(ProductRequestDto dto, Long id) {
+        Product product = productRepository.findByIdOptional(id).orElseThrow();
+        product.update(dto.getName(), dto.getPrice(), dto.getDescription());
+        return product.getId();
+    }
+
     private ProductResponseDto toDto(Product product) {
         return ProductResponseDto.builder()
                 .id(product.getId())
@@ -45,7 +51,7 @@ public class ProductService {
                 .build();
     }
 
-    public Product toEntity(ProductRequestDto dto) {
+    private Product toEntity(ProductRequestDto dto) {
         return Product.builder()
                 .name(dto.getName())
                 .price(dto.getPrice())
