@@ -30,16 +30,20 @@ public class ProductService {
         return productRepository.findAllProductPagination(page, size).stream().map(this::toDto).toList();
     }
 
-    public Long addProduct(ProductRequestDto dto) {
+    public Long save(ProductRequestDto dto) {
         Product product = toEntity(dto);
         productRepository.persist(product);
         return product.getId();
     }
 
-    public Long updateProduct(ProductRequestDto dto, Long id) {
+    public Long update(ProductRequestDto dto, Long id) {
         Product product = productRepository.findByIdOptional(id).orElseThrow();
         product.update(dto.getName(), dto.getPrice(), dto.getDescription());
         return product.getId();
+    }
+
+    public void deleteById(Long id) {
+        productRepository.deleteById(id);
     }
 
     private ProductResponseDto toDto(Product product) {

@@ -3,6 +3,7 @@ package controller;
 import dto.req.ProductRequestDto;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.DefaultValue;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
@@ -13,6 +14,7 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.Response.Status;
 import service.ProductService;
 
 @Path("/product")
@@ -43,12 +45,19 @@ public class ProductController {
     @POST
     @Path("/add")
     public Response addProduct(ProductRequestDto dto) {
-        return Response.ok(productService.addProduct(dto)).build();
+        return Response.status(Status.CREATED).entity(productService.save(dto)).build();
     }
 
     @PUT
     @Path("/update/{id}")
     public Response updateProduct(@PathParam("id") Long id, ProductRequestDto dto) {
-        return Response.ok(productService.updateProduct(dto, id)).build();
+        return Response.status(Status.CREATED).entity(productService.update(dto, id)).build();
+    }
+
+    @DELETE
+    @Path("/delete/{id}")
+    public Response deleteProduct(@PathParam("id") Long id) {
+        productService.deleteById(id);
+        return Response.noContent().build();
     }
 }
