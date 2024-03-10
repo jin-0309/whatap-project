@@ -3,7 +3,9 @@
 와탭랩스 백엔드 개발자 채용 과제 프로젝트 product server입니다.
 
 ---
+
 ## 목차
+
 1. [기술 요구 사항](#기술-요구-사항)
 2. [기능 요구 사항](#기능-요구-사항)
 3. [디렉토리 구조](#디렉토리-구조)
@@ -17,7 +19,8 @@
 언어: Java 17 <br>
 프레임워크: Quarkus 3.8.1 <br>
 데이터베이스: PostgreSQL <br>
-ORM: Panache
+ORM: Panache <br>
+port: 8080
 
 ---
 
@@ -32,6 +35,7 @@ ORM: Panache
 ---
 
 ## 디렉토리 구조
+
 ```
 java
 +--controller
@@ -60,9 +64,11 @@ java
 +--service
     +--ProdouctService
 ```
+
 ---
 
 ## 데이터베이스 스키마
+
 ![img.png](product.png)
 
 ---
