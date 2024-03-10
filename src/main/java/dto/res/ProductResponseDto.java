@@ -7,11 +7,11 @@ import lombok.Getter;
 public class ProductResponseDto {
     private Long id;
     private String name;
-    private Float price;
+    private Double price;
     private String description;
 
     @Builder
-    public ProductResponseDto(Long id, String name, Float price, String description) {
+    public ProductResponseDto(Long id, String name, Double price, String description) {
         this.id = id;
         this.name = name;
         this.price = price;
