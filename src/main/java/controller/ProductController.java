@@ -37,7 +37,7 @@ public class ProductController {
     }
 
     @GET
-    @Path("/get/{id}")
+    @Path("/{id}")
     @Operation(summary = "상품 조회")
     @APIResponseSchema(ProductResponseDto.class)
     public Response getProduct(@PathParam("id") Long id) {
@@ -45,7 +45,7 @@ public class ProductController {
     }
 
     @GET
-    @Path("/get/page")
+    @Path("/page")
     @Operation(summary = "상품 pagination 조회")
     @APIResponse(responseCode = "200",
             content = {@Content(schema = @Schema(type = SchemaType.ARRAY, implementation = ProductResponseDto.class))})
@@ -55,7 +55,7 @@ public class ProductController {
     }
 
     @POST
-    @Path("/add")
+    @Path("")
     @Operation(summary = "상품 추가")
     @APIResponse(responseCode = "201", content = {@Content(schema = @Schema(implementation = Long.class))})
     public Response addProduct(ProductRequestDto dto) {
@@ -63,7 +63,7 @@ public class ProductController {
     }
 
     @PUT
-    @Path("/update/{id}")
+    @Path("/{id}")
     @Operation(summary = "상품 수정")
     @APIResponse(responseCode = "201", content = {@Content(schema = @Schema(implementation = Long.class))})
     public Response updateProduct(@PathParam("id") Long id, ProductRequestDto dto) {
@@ -71,7 +71,7 @@ public class ProductController {
     }
 
     @DELETE
-    @Path("/delete/{id}")
+    @Path("/{id}")
     @Operation(summary = "상품 삭제")
     @APIResponse(responseCode = "204")
     public Response deleteProduct(@PathParam("id") Long id) {
