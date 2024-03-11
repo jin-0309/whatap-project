@@ -77,10 +77,10 @@ java
 
 모든 요청과 응답의 Content-Type은 application/json입니다.
 
-| API                    | API URL              | Method | Request                                                             | Response                                                                                     | StatusCode |
-|------------------------|----------------------|--------|---------------------------------------------------------------------|----------------------------------------------------------------------------------------------|------------|
-| getProduct             | /product/get/{id}    | GET    |                                                                     | {<br>"id": int,<br>"name": String,<br>"price": int,<br>"description": String<br>}            | 200        |
-| getProductByPagination | /product/get/page    | GET    | page?int<br>size?int                                                | [<br> {<br>"id": int,<br>"name: String,<br>"price": int,<br>"description": String<br> }<br>] | 200        |
-| addProduct             | /product/add         | POST   | {<br>"name": string,<br>"price": int,<br>"description": string<br>} |                                                                                              | 201        |
-| updateProduct          | /product/update/{id} | PUT    | {<br>"name": string,<br>"price": int,<br>"description": string<br>} |                                                                                              | 201        |
-| deleteProduct          | /product/delete/{id} | DELETE |                                                                     |                                                                                              | 204        |
+| API                    | API URL       | Method | Request                                                             | Response                                                                                     | StatusCode |
+|------------------------|---------------|--------|---------------------------------------------------------------------|----------------------------------------------------------------------------------------------|------------|
+| getProduct             | /product/{id} | GET    |                                                                     | {<br>"id": int,<br>"name": String,<br>"price": int,<br>"description": String<br>}            | 200        |
+| getProductByPagination | /product/page | GET    | page?int<br>size?int                                                | [<br> {<br>"id": int,<br>"name: String,<br>"price": int,<br>"description": String<br> }<br>] | 200        |
+| addProduct             | /product      | POST   | {<br>"name": string,<br>"price": int,<br>"description": string<br>} |                                                                                              | 201        |
+| updateProduct          | /product/{id} | PUT    | {<br>"name": string,<br>"price": int,<br>"description": string<br>} |                                                                                              | 201        |
+| deleteProduct          | /product/{id} | DELETE |                                                                     |                                                                                              | 204        |
